@@ -1,0 +1,13 @@
+✅ Mục 2: Component
+
+🧠 Câu hỏi:
+Functional Component là gì?
+Props hoạt động như thế nào?
+Component có thể lồng nhau không?
+
+🧪 Bài tập:
+Tạo 1 component UserCard nhận props: name, age, avatar.
+Tạo component UserList dùng nhiều UserCard.
+Tạo component Button nhận nội dung qua children.
+Thử truyền hàm qua props và gọi trong component con.
+
