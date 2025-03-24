@@ -1,0 +1,13 @@
+✅ Mục 5: useEffect
+
+🧠 Câu hỏi:
+useEffect chạy khi nào?
+Làm sao để useEffect chỉ chạy một lần?
+Điều gì xảy ra nếu dependency array bị thiếu?
+
+🧪 Bài tập:
+Dùng useEffect để log "Component mounted" 1 lần duy nhất.
+Gọi API từ https://jsonplaceholder.typicode.com/users và hiển thị danh sách tên.
+Tạo đồng hồ thời gian thực (dùng setInterval + useEffect).
+Bắt sự kiện cuộn (scroll) và log vị trí cuộn vào console.
+
