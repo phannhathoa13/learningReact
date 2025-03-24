@@ -1,0 +1,11 @@
+✅ Mục 12: Deploy ứng dụng
+
+🧠 Câu hỏi:
+Các bước để build ứng dụng React?
+Khác biệt giữa dev và build là gì?
+Vercel/Netlify dùng như thế nào?
+
+🧪 Bài tập:
+Chạy npm run build và kiểm tra folder /build.
+Deploy project lên Netlify hoặc Vercel (bằng GitHub).
+Gửi link web đã deploy cho bạn bè 😎
