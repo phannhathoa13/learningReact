@@ -1,0 +1,11 @@
+✅ Mục 4: State & Event
+🧠 Câu hỏi:
+useState là gì? Làm sao để cập nhật giá trị?
+State thay đổi thì component có render lại không?
+Sự kiện trong React khác gì so với HTML?
+
+🧪 Bài tập:
+Làm một Counter có nút tăng/giảm/reset.
+Ô nhập tên người dùng + nút "Hiển thị tên" (có dùng state).
+Component bật/tắt đèn (true/false → hiển thị trạng thái).
+Thử viết một nút "Đổi màu nền" mỗi lần click.
