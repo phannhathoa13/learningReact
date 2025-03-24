@@ -1,19 +1,14 @@
 ✅ Mục 1: JSX – JavaScript XML
 
  🧠 Câu hỏi:
-// JSX là gì và tại sao lại cần dùng?
-
-// JSX có thể viết nhiều element cùng lúc không?
-
-// Phân biệt class và className, for và htmlFor?
-
-// Làm sao để render giá trị biến trong JSX?
+JSX là gì và tại sao lại cần dùng?
+JSX có thể viết nhiều element cùng lúc không?
+Phân biệt class và className, for và htmlFor?
+Làm sao để render giá trị biến trong JSX?
 
 🧪 Bài tập:
-// Tạo một component hiển thị tên bạn và năm sinh.
+Tạo một component hiển thị tên bạn và năm sinh.
+Dùng một biến chứa tên và render trong thẻ <h1>.
+Viết một component có nhiều thẻ <div>, <p> nhưng được bọc trong Fragment (<>...</>).
+Tạo component hiển thị khác nhau tuỳ biến boolean (isLogin).
 
-// Dùng một biến chứa tên và render trong thẻ <h1>.
-
-// Viết một component có nhiều thẻ <div>, <p> nhưng được bọc trong Fragment (<>...</>).
-
-// Tạo component hiển thị khác nhau tuỳ biến boolean (isLogin).
