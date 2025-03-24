@@ -1,0 +1,10 @@
+✅ Mục 9: Quản lý state nâng cao (Context API)
+🧠 Câu hỏi:
+Context API giúp gì cho project?
+Provider và Consumer hoạt động thế nào?
+
+🧪 Bài tập:
+Tạo ThemeContext và nút chuyển Light/Dark mode.
+Context chứa thông tin đăng nhập (userInfo) và truyền xuống nhiều component.
+Tạo CartContext để thêm/xoá sản phẩm từ nhiều component.
+Custom useTheme() hook lấy dữ liệu từ context.
