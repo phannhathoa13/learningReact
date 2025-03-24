@@ -1,0 +1,11 @@
+✅ Mục 10: Hooks nâng cao
+
+🧠 Câu hỏi:
+Khi nào dùng useRef, useMemo, useCallback?
+useRef khác gì với useState?
+
+🧪 Bài tập:
+Dùng useRef truy cập DOM và focus input khi component mount.
+Memo hoá hàm tính tổng lớn bằng useMemo.
+useCallback để truyền callback vào component con không bị tạo lại.
+Tạo 1 Custom Hook: useWindowWidth() trả về chiều rộng màn hình.
