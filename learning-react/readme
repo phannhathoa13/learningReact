@@ -1,0 +1,11 @@
+✅ Mục 7: Form và xử lý dữ liệu nhập
+🧠 Câu hỏi:
+Controlled component là gì?
+e.preventDefault() dùng để làm gì?
+Làm sao để bind nhiều input với state?
+
+🧪 Bài tập:
+Form nhập tên + tuổi → hiển thị kết quả bên dưới.
+Form có các input: tên, email, giới tính (radio), sở thích (checkbox).
+Submit form -> in ra object userData.
+Viết component SearchBox lọc danh sách theo từ khoá.
