@@ -1,0 +1,11 @@
+✅ Mục 6: Danh sách & Key
+
+🧠 Câu hỏi:
+.map() dùng để làm gì trong JSX?
+Tại sao cần key khi render list?
+
+🧪 Bài tập:
+Hiển thị danh sách sản phẩm với tên, giá, và hình ảnh.
+Dùng .map() để tạo ra list thẻ <li> từ mảng tên.
+Hiển thị danh sách người dùng từ API (useEffect + useState).
+Thêm nút "Xoá" từng dòng → xóa item khỏi state.
