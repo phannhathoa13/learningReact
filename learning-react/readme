@@ -1,0 +1,11 @@
+✅ Mục 8: React Router
+
+🧠 Câu hỏi:
+Cấu trúc route đơn giản trong React như thế nào?
+useParams và useNavigate dùng để làm gì?
+
+🧪 Bài tập:
+Tạo 3 trang: Home, About, Contact → Điều hướng bằng <Link>.
+Trang UserDetail lấy ID từ URL: /users/:id.
+Tạo trang 404 khi URL không đúng.
+Dùng useNavigate() để chuyển trang sau 3s (giống redirect).
