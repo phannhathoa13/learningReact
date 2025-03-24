@@ -5,6 +5,8 @@ Functional Component là gì?
 Props hoạt động như thế nào?
 Component có thể lồng nhau không?
 
+🔑 Từ khóa: function, props, <ComponentName />, children
+
 🧪 Bài tập:
 Tạo 1 component UserCard nhận props: name, age, avatar.
 Tạo component UserList dùng nhiều UserCard.
