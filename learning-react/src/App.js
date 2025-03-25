@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 const listroducts = [
   { title: "Cabbage", isFruit: false, amount: 20, id: 1 },
   { title: "Garlic", isFruit: false, amount: 30, id: 2 },
   { title: "Apple", isFruit: true, amount: 40, id: 3 },
 ];
+
 
 function App() {
   const listItems = listroducts.map(
@@ -53,4 +54,69 @@ function CountClickButton() {
   );
 }
 
-export { App, MyButton, CountClickButton };
+function handClickButton(setCount,count) {
+   setCount(count +1);
+}
+
+function CounterButton() {
+  const [count, setCount] = useState(0);
+  return (
+    <>
+    <button onClick={() => handClickButton(setCount,count)}>You click {count} times</button>
+    <button onClick={() => handClickButton(setCount,count)}>You click {count} times</button>
+    </>
+  )
+}
+
+function ToggleText() {
+  const [text,setText] = SetUseState(false);
+  return (
+    <>
+      <button onClick={() => setText(!text)}>Toggle</button>
+      {text && <p>Hi bro</p> }
+    </>
+  )
+}
+
+function FormInput() {
+  const [name,setName] = SetUseState("");
+  return (
+    <>
+    <input type="text" placeholder="Enter Username" onChange={(event) => setName(event.target
+      .value)}></input>
+    {<p>Xin chao {name}</p>}
+    </>
+  )
+}
+
+
+function ToogleDarkMode() {
+  const [isDark,setisDark] = SetUseState(true);
+  return (
+    <>
+   <div style={{height: "100%", width: "100%", backgroundColor: isDark ? "black" : "white" }}>
+    <button onClick={() => setisDark(!isDark)}>{isDark ? "Swtich light Mode" : "Switch Dark Mode"}</button>
+   </div>
+    </>
+  )
+}
+
+function DisplayTitle() {
+  const [name, setName] = SetUseState("");
+
+  useEffect(() => {
+    document.title  = name ?  `Hello: ${name}` : '';
+  }, [name])
+  return (
+    <input type="text" value={name} placeholder="Enter Name" onChange={(event) => setName(event.target.value)}></input>
+  )
+}
+
+function SetUseState(dataTyes) {
+ const [variableName, setVariableName ] = useState(dataTyes);
+ return [variableName, setVariableName ]
+}
+
+
+
+export { App, MyButton, CountClickButton, CounterButton,ToggleText,FormInput ,ToogleDarkMode,DisplayTitle};
