@@ -16,7 +16,7 @@ const PRODUCTS = [
 // components
 function LearnReact() {
   const [filterText, setFilterText] = useState("");
-  const [priceSelected, setPriceSelected] = useState(0);
+  const [priceSelected, setPriceSelected] = useState(1);
 
   return (
     <div>
@@ -38,8 +38,11 @@ function filterProducts(products, filterText,priceSelected) {
       .toLowerCase()
       .includes(filterText.toLowerCase());
 
+    const priceNumber = parseFloat(_product.price.split("$", 2).splice(1, 2));
 
-    return matchProductName;
+    const matchPrie = priceNumber == priceSelected
+
+    return matchProductName && matchPrie;
   });
 }
 
