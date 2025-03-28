@@ -50,5 +50,13 @@ function CountClickButton() {
   )
 }
 
+function Test() {
+  return (
+    <div style={{ backgroundColor: "red", width: "200px", height: "100px" }}>
 
-export { App, MyButton, CountClickButton };
+    </div>
+  )
+}
+
+
+export { App, MyButton, CountClickButton, Test };
