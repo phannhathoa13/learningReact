@@ -11,5 +11,5 @@ Component có thể lồng nhau không?
 Tạo 1 component UserCard nhận props: name, age, avatar.
 Tạo component UserList dùng nhiều UserCard.
 Tạo component Button nhận nội dung qua children.
-Thử truyền hàm qua props và gọi trong component con.
+Thử truyền hàm qua props và gọi trong component con. // từ 1 giá trị truyền cho tất cả thằng ccon
 
