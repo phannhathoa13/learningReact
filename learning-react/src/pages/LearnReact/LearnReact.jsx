@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { DisplayListProducts } from "../../components/DisplayListProducts/DisplayListProducts";
-import { DropDown } from "../../components/DropDown/DropDown";
+import { DropDown, listDropDownInfor } from "../../components/DropDown/DropDown";
 
 //data
 const PRODUCTS = [
@@ -24,6 +24,7 @@ function LearnReact() {
       <DropDown
         dropDownList={filterProductPricecDuplicate()}
         setDropDownList={setPriceSelected}
+        selectListDropDownInfor = {listDropDownInfor.displayAllPrice}
       />
 
       <DisplayListProducts products={filterProducts(PRODUCTS, filterText,priceSelected)} />
