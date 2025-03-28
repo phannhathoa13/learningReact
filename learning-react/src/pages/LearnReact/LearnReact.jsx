@@ -26,7 +26,6 @@ function LearnReact() {
         setDropDownList={setPriceSelected}
         selectListDropDownInfor = {listDropDownInfor.displayAllPrice}
       />
-
       <DisplayListProducts products={filterProducts(PRODUCTS, filterText,priceSelected)} />
     </div>
   );
