@@ -1,25 +1,20 @@
-function DropDown({ dropDownList, setDropDownList, selectListDropDownInfor }) {
+function DropDown({title, dropDownList, setDropDownList, defaultOptionName }) {
+    function displayDefaultOptionName() {
+        if(defaultOptionName){
+            return (<option value={-1}>{defaultOptionName}</option>);
+        }
+    }
+    
     return (
         <form>
-            <label>Choose Price</label>
+            <label>{title}</label> 
             <select onChange={e => setDropDownList(e.target.value)}>
-                {selectListDropDownInfor !== null && (
-                    <option value={-1}>{selectListDropDownInfor}</option>
-                )}
-                {dropDownList.map((dropDownValue, index) => (
-                    <option key={index} value={dropDownValue}>
-                        {' '}
-                        ${dropDownValue}
-                    </option>
-                ))}
+               {displayDefaultOptionName()}
+               
+                {dropDownList}
             </select>
         </form>
     )
 }
 
-const listDropDownInfor = {
-    displayAllPrice : 'all',
-    displayStocked: null
-}
-
-export { DropDown, listDropDownInfor }
+export { DropDown }
