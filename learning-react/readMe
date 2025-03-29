@@ -2,21 +2,66 @@
 
  🧠 Câu hỏi:
 JSX là gì và tại sao lại cần dùng?
-    => JSX là có thể chứa html, js,css ở trong
-    => để xuất lên trình duyệt mà không cần reload lại page
+    => JSX là thư viện mở rộng của js, cho phép viết html trong js
+    => nó sẽ giúp mô tả UI dễ dàng hơn
+
 JSX có thể viết nhiều element cùng lúc không?
     => Có thể viết nhiều element cùng lúc
+
 Phân biệt class và className, for và htmlFor? // tìm hiểu htmlfor
     => class là thuộc tính của html
     => className là thuộc tính của js và jsx
 
     => for trong js và jsx đc hiểu là vòng lặp
     => còn htmlfor là để khai báo thuộc tính for của html cho thẻ label
+
 Làm sao để render giá trị biến trong JSX?
+    => ta chỉ cần dùng { tên biến }
 
 🧪 Bài tập:
 Tạo một component hiển thị tên bạn và năm sinh.
 Dùng một biến chứa tên và render trong thẻ <h1>.
+     => function DisplayMyNameAndDate() {
+  const name = "Nhat Hoa"
+  return (
+    <>
+      <div>
+        <h1>{name}</h1>
+        <h2>Date: 2004</h2>
+      </div>
+    </>
+  )
+}
+
+
 Viết một component có nhiều thẻ <div>, <p> nhưng được bọc trong Fragment (<>...</>).
+    => function CreateSpaceDOM() {
+  return (
+    <>
+      <div>
+        <div>
+          <p>
+            <p>
+            </p>
+          </p>
+        </div>
+      </div>
+    </>
+  )
+}
+
 Tạo component hiển thị khác nhau tuỳ biến boolean (isLogin). // true thi hiện false thì ko hiện
+    => function DisplayTrueFlag() {
+  const isLogIn = true;
+  if (isLogIn) {
+    return (
+      <>
+        {`${isLogIn}`}
+      </>
+    )
+  }
+  else {
+    return null
+  }
+}
 
