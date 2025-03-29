@@ -1,54 +1,77 @@
-import React from "react";
-import { useState } from "react";
-const listroducts = [
-  { title: 'Cabbage', isFruit: false, amount: 20, id: 1 },
-  { title: 'Garlic', isFruit: false, amount: 30, id: 2 },
-  { title: 'Apple', isFruit: true, amount: 40, id: 3 },
-];
+import { useEffect, useState } from "react";
+import { fetchUser$ } from "./controllers/usersControllers";
 
-function App() {
-  const listItems = listroducts.map((product) => (  // Key dùng để Trích tới thẳng ví trị hoặc id của phần tử đó mà ko cần reRender lại cả trang
-    <li key={product.id} style={{ color: product.isFruit ? 'blue' : 'red' }}>
-      <strong>{product.title}</strong> - Amount: {product.amount}
-    </li>
 
-  ));
-  console.log(listItems);
-
-  return ( // Dấu <> Nó là 1 fragment, có nghĩa là nó sẽ ko tạo 1 phần tử cha ra để đỡ tốn tài nguyên
-    <>
-      <h1>Product List</h1>
-      <ul>{listItems}</ul>
-    </>
-  );
-
-}
-
-function MyButton() {
-  function clickMeButton() {
-    window.alert("you clicked me");
-  }
-  return ( // Khi báo function trong jsx, nếu muốn nó chạy ngay lặp tức thì thêm dấu (), còn muốn chờ đợi thì ko có dấu ()
-    <button onClick={clickMeButton}>
-      Click me
-    </button>
-  )
-}
-
-function CountClickButton() {
+function LogUseEffectOneTime() {
   const [count, setCount] = useState(0);
 
-  function handleClick() {
-    setCount(count + 1)
-  }
+  useEffect(() => {
+    console.log(`useEffect run ${count}`);
+  }, [])
   return (
     <>
-      <button onClick={handleClick}>
-        You clicked {count} time
-      </button>
+      <p>You clicked: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increase</button>
+    </>
+  )
+}
+
+function DisplayListUser() {
+  const [userList, setUserList] = useState([]);
+
+  useEffect(() => {
+    async function getUsers() {
+      return setUserList(await fetchUser$())
+    }
+    getUsers();
+  }, [])
+
+  return (
+    <>
+      {userList.map((users, index) => {
+        return <p key={index} >{users.name} </p>
+      })}
     </>
   )
 }
 
 
-export { App, MyButton, CountClickButton };
+function DisplayRealTime() {
+  const [time, setTime] = useState(new Date().toLocaleTimeString());
+
+  useEffect(() => {
+    setInterval(() => {
+      setTime(new Date().toLocaleTimeString())
+    }, 1000);
+  }, [])
+  return (
+    <>
+      <h2>Time</h2>
+      {time}
+    </>
+  )
+}
+
+function CacthUserScroll() {
+  useEffect(() => {
+
+    function handleSrollPosition() {
+      const scrollPosition = window.scrollY
+      console.log(scrollPosition, "px");
+    }
+    window.addEventListener('scroll', handleSrollPosition)
+
+    return () => {
+      window.removeEventListener('scroll', handleSrollPosition)
+    }
+  }, [])
+
+  return (
+    <div style={{ height: "500px" }}>
+      <p>Scroll down and check console</p>
+    </div>
+  )
+}
+
+
+export { LogUseEffectOneTime, DisplayListUser, DisplayRealTime, CacthUserScroll }

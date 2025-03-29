@@ -2,12 +2,74 @@
 
 🧠 Câu hỏi:
 useEffect chạy khi nào?
+    => chạy khi các components đc rendet xong
 Làm sao để useEffect chỉ chạy một lần?
+    => khai báo useEffect là 1 một arrow function và ngay dấu đóng có thêm []
 Điều gì xảy ra nếu dependency array bị thiếu?
+    => nó sẽ chạy khi bất kì components renders lại
 
 🧪 Bài tập:
 Dùng useEffect để log "Component mounted" 1 lần duy nhất.
+    => function TestUseffect() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log(`useEffect run ${count}`);
+  }, [])
+  return (
+    <>
+      <p>You clicked: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increase</button>
+    </>
+  )
+}
 Gọi API từ https://jsonplaceholder.typicode.com/users và hiển thị danh sách tên.
+    => function DisplayListUser() {
+  const [userList, setUserList] = useState([]);
+
+  useEffect(() => {
+    async function getUsers() {
+      return setUserList(await fetchUser$())
+    }
+    getUsers();
+  }, [])
+
+  return (
+    <>
+      {userList.map((users, index) => {
+        return <p key={index} >{users.name} </p>
+      })}
+    </>
+  )
+}
+
 Tạo đồng hồ thời gian thực (dùng setInterval + useEffect).
+    => function DisplayRealTime() {
+  const [time, setTime] = useState(new Date().toLocaleTimeString());
+
+  useEffect(() => {
+    setInterval(() => {
+      setTime(new Date().toLocaleTimeString())
+    }, 1000);
+  }, [])
+  return (
+    <>
+      <h2>Time</h2>
+      {time}
+    </>
+  )
+}
 Bắt sự kiện cuộn (scroll) và log vị trí cuộn vào console.
+    => function CacthUserScroll() {
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY
+      console.log(scrollPosition, "px");
+    })
+
+  return (
+    <div style={{ height: "500px" }}>
+      <p>Scroll down and check log</p>
+    </div>
+  )
+}
 
