@@ -19,7 +19,6 @@ const stockedListLabel = {
   true: "True"
 }
 
-
 // components
 function LearnReact() {
   const [filterText, setFilterText] = useState("");
@@ -77,7 +76,7 @@ function filterProducts(products, filterText, priceSelected, isProductStocked) {
   });
 }
 
-function getPriceListFromProduct() {
+function getPriceList() {
   const listPriceString = PRODUCTS.map((_product) =>
     _product.price.split("$", 2).splice(1, 2)
   );
@@ -85,16 +84,16 @@ function getPriceListFromProduct() {
 }
 
 function removeDuplicatePrice() {
-  const filterProductPrice = [];
-  const priceList = getPriceListFromProduct();
+  const filterProductPriceDuplicate = [];
+  const priceList = getPriceList();
   priceList.forEach((price) => {
-    if (filterProductPrice.some((_price) => _price == price)) {
+    if (filterProductPriceDuplicate.some((_price) => _price == price)) {
       return;
     } else {
-      filterProductPrice.push(price);
+      filterProductPriceDuplicate.push(price);
     }
   });
-  return filterProductPrice;
+  return filterProductPriceDuplicate;
 }
 
 //implement
