@@ -2,14 +2,67 @@
 
 🧠 Câu hỏi:
 Functional Component là gì?
+    => Nó là 1 function nhưng trả về jsx
 Props hoạt động như thế nào?
+    => Props như là 1 biến để truyền dữ liệu từ components cha xuống components con
 Component có thể lồng nhau không?
+    => Có thể
 
 🔑 Từ khóa: function, props, <ComponentName />, children
 
 🧪 Bài tập:
 Tạo 1 component UserCard nhận props: name, age, avatar.
+    => function UserCart({ name, age, avatar }) {
+  return (
+    <div>
+      <ButtonDisplayAler name={name} />
+      <div>Name : {name}</div>
+      <div>age : {age}</div>
+      <div>avatar : {avatar}</div>
+    </div>
+  )
+}
 Tạo component UserList dùng nhiều UserCard.
+    => function UserList() {
+  return (
+    <div >
+      <UserCart name={"Nhat Hoa"} age={"18"} avatar={"hoaphan.png"} />
+      <UserCart name={"Minh Tan"} age={"20"} avatar={"minhtan.png"} />
+      <UserCart name={"Tan Dat"} age={"21"} avatar={"tandat.png"} />
+    </div>
+  )
+}
+
 Tạo component Button nhận nội dung qua children.
+    =>  function UserCart({ name, age, avatar }) {
+  return (
+    <div>
+      <Button name={name} />
+      <div>Name : {name}</div>
+      <div>age : {age}</div>
+      <div>avatar : {avatar}</div>
+    </div>
+  )
+}
+     =>  function Button({ name }) {
+  return (
+    <>
+      <button onClick={() => {
+        window.alert(name);
+      }}>{name}</button>
+    </>
+  )
+}
+
 Thử truyền hàm qua props và gọi trong component con. // từ 1 giá trị truyền cho tất cả thằng ccon
+    => function UserList() {
+  const age = "30"
+  return (
+    <div >
+      <UserCart name={"Nhat Hoa"} age={age} avatar={"hoaphan.png"} />
+      <UserCart name={"Minh Tan"} age={age} avatar={"minhtan.png"} />
+      <UserCart name={"Tan Dat"} age={age} avatar={"tandat.png"} />
+    </div>
+  )
+}
 
