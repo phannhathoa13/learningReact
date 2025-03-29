@@ -2,8 +2,16 @@
 
  🧠 Câu hỏi:
 JSX là gì và tại sao lại cần dùng?
+    => JSX là có thể chứa html, js,css ở trong
+    => để xuất lên trình duyệt mà không cần reload lại page
 JSX có thể viết nhiều element cùng lúc không?
+    => Có thể viết nhiều element cùng lúc
 Phân biệt class và className, for và htmlFor? // tìm hiểu htmlfor
+    => class là thuộc tính của html
+    => className là thuộc tính của js và jsx
+
+    => for trong js và jsx đc hiểu là vòng lặp
+    => còn htmlfor là để khai báo thuộc tính for của html cho thẻ label
 Làm sao để render giá trị biến trong JSX?
 
 🧪 Bài tập:

@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { App, CountClickButton, MyButton } from "./App";  // Import App.js để hiển thị nội dung
+import { DisplayMyNameAndDate, DisplayTrueFlag } from "./App";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
-    <App />
-    <MyButton />
-    <CountClickButton />
+    <DisplayMyNameAndDate />
+    <DisplayTrueFlag />
   </>
 );
 
