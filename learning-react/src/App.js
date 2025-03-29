@@ -1,62 +1,71 @@
-import React from "react";
 import { useState } from "react";
-const listroducts = [
-  { title: 'Cabbage', isFruit: false, amount: 20, id: 1 },
-  { title: 'Garlic', isFruit: false, amount: 30, id: 2 },
-  { title: 'Apple', isFruit: true, amount: 40, id: 3 },
-];
 
-function App() {
-  const listItems = listroducts.map((product) => (  // Key dùng để Trích tới thẳng ví trị hoặc id của phần tử đó mà ko cần reRender lại cả trang
-    <li key={product.id} style={{ color: product.isFruit ? 'blue' : 'red' }}>
-      <strong>{product.title}</strong> - Amount: {product.amount}
-    </li>
+function Counter() {
+  let [count, setCount] = useState(0);
 
-  ));
-  console.log(listItems);
-
-  return ( // Dấu <> Nó là 1 fragment, có nghĩa là nó sẽ ko tạo 1 phần tử cha ra để đỡ tốn tài nguyên
-    <>
-      <h1>Product List</h1>
-      <ul>{listItems}</ul>
-    </>
-  );
-
-}
-
-function MyButton() {
-  function clickMeButton() {
-    window.alert("you clicked me");
-  }
-  return ( // Khi báo function trong jsx, nếu muốn nó chạy ngay lặp tức thì thêm dấu (), còn muốn chờ đợi thì ko có dấu ()
-    <button onClick={clickMeButton}>
-      Click me
-    </button>
-  )
-}
-
-function CountClickButton() {
-  const [count, setCount] = useState(0);
-
-  function handleClick() {
-    setCount(count + 1)
-  }
   return (
-    <>
-      <button onClick={handleClick}>
-        You clicked {count} time
-      </button>
-    </>
-  )
-}
-
-function Test() {
-  return (
-    <div style={{ backgroundColor: "red", width: "200px", height: "100px" }}>
-
+    <div>
+      You clicked {count} time
+      <button onClick={() => setCount(count + 1)}>Increase</button>
+      <button onClick={() => setCount(count - 1)}>Decrease</button>
+      <button onClick={() => setCount(count = 0)}>Reset</button>
     </div>
   )
 }
 
+function DisplayTextInput() {
+  const [textInput, setTextInput] = useState("");
+  const [showMassage, setShowMassage] = useState(false);
+  return (
+    <div>
+      <input type="text" placeholder="Enter your name" onInput={(event) => setTextInput(event.target.value)} />
+      <button onClick={() => setShowMassage(!showMassage)}>Hiển thị tên</button>
+      {showMassage ? <p>Hello {textInput}</p> : null}
+    </div>
+  )
+}
 
-export { App, MyButton, CountClickButton, Test };
+function ChangeStateDisplay() {
+  const [isDark, setIsDark] = useState(false);
+  return (
+    <>
+      <button onClick={() => setIsDark(!isDark)}>
+        {isDark ? "Light Mode" : "Dark Mode"}
+      </button>
+      {isDark ? setColorBackGround("black") : setColorBackGround("white")}
+    </>
+  )
+}
+
+function ChangeColorDisplay() {
+  const [colorState, setColorState] = useState(true);
+
+  let x = getRamdomNumber();
+  let y = getRamdomNumber();
+  let z = getRamdomNumber();
+
+  return (
+    <div>
+      <button onClick={() => setColorState(!colorState)}>Change Color</button>
+      {colorState ? setRGBBackgroundColor(x, y, z) : setRGBBackgroundColor(x, y, z)}
+    </div>
+  )
+}
+
+function getRamdomNumber() {
+  return Math.floor(Math.random() * 256);
+}
+
+function setRGBBackgroundColor(x, y, z) {
+  return (
+    <div style={{ backgroundColor: `rgb(${x},${y},${z})`, width: "400px", height: "400px" }}></div>
+  )
+}
+
+function setColorBackGround(color) {
+  return (
+    <div style={{ backgroundColor: color, width: "400px", height: "400px" }}></div>
+  )
+}
+
+export { Counter, DisplayTextInput, ChangeStateDisplay, ChangeColorDisplay }
