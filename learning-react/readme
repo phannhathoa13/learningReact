@@ -2,123 +2,126 @@
 
 🧠 Câu hỏi:
 .map() dùng để làm gì trong JSX?
-    => dùng để hiển thị ra các phần tử jsx hoặc các danh sách phần tử jsx
+=> dùng để hiển thị ra các phần tử jsx hoặc các danh sách phần tử jsx
 Tại sao cần key khi render list?
-    => để khi render thì React phân định đúng index hoặc id của từng phần tử
+=> để khi render thì React phân định địa chỉ của từng phần tử, nếu có sự thay đổi tại phần tử đó thì ko cần Re-Render
+lại cả components
 
 🧪 Bài tập:
-Hiển thị danh sách sản phẩm với tên, giá, và hình ảnh && 
-Dùng .map() để tạo ra list thẻ <li> từ mảng tên.
-Hiển thị danh sách người dùng từ API (useEffect + useState).
-Thêm nút "Xoá" từng dòng → xóa item khỏi state.
+- Hiển thị danh sách sản phẩm với tên, giá, và hình ảnh &&
+- Dùng .map() để tạo ra list thẻ <li> từ mảng tên.
+  - Hiển thị danh sách người dùng từ API (useEffect + useState).
+  - Thêm nút "Xoá" từng dòng → xóa item khỏi state.
 
-    =>  Tôi làm 1 Components có thể tái sử dụng cho danh sách sản phẩm và danh sácch User
+  => Tôi làm 1 Components có thể tái sử dụng cho danh sách sản phẩm và danh sácch User
 
-    => Trang DisplayList.jsx Gồm {
-    import { ButtonRemoveItem } from "../RemoveItem/RemoveItem";
+  => Trang DisplayList.jsx Gồm {
+  import { ButtonRemoveItem } from "../RemoveItem/RemoveItem";
 
-    function DisplayList({ title,list,onClickRemove }) {
-    return (
-        <div>
-        <h2>{title}</h2>
-        {list.map((listValue) => (
-            <div key={listValue.id}>
-            {titleIdentify(listValue, title, onClickRemove)}
-            </div>
-        ))}
-        </div>
-    );
-    }
+  function DisplayList({ title,list,onClickRemove }) {
+  return (
+  <div>
+    <h2>{title}</h2>
+    {list.map((listValue) => (
+    <div key={listValue.id}>
+      {titleIdentify(listValue, title, onClickRemove)}
+    </div>
+    ))}
+  </div>
+  );
+  }
 
-    function titleIdentify(listValue, title,onClickRemove) {
-    if (title == "Products") {
-        return (
-        <li style={{ display: "flex", alignItems: "center", margin: "10px" }}>
-            <img
-            src={listValue.image}
-            style={{ width: "70px", height: "50px" }}
-            ></img>
-            Name: {listValue.name} Price: {listValue.price}
-            <ButtonRemoveItem onClickRemove={onClickRemove} dataId={listValue.id} />
-        </li>
-        );
-    } else if (title == "Users") {
-        return (
-        <li style={{margin: "10px",}}>
-            Name: {listValue.name} Username: {listValue.username} email:{" "}
-            {listValue.email} phone: {listValue.phone}
-            <ButtonRemoveItem onClickRemove={onClickRemove} dataId={listValue.id} />
-        </li>
-        );
-    }
-    }
-
-    export { DisplayList };
+  function titleIdentify(listValue, title,onClickRemove) {
+  if (title == "Products") {
+  return (
+<li style={{ display: "flex" , alignItems: "center" , margin: "10px" }}>
+  <img src={listValue.image} style={{ width: "70px" , height: "50px" }}></img>
+  Name: {listValue.name} Price: {listValue.price}
+  <ButtonRemoveItem onClickRemove={onClickRemove} dataId={listValue.id} />
+</li>
+);
+} else if (title == "Users") {
+return (
+<li style={{margin: "10px" ,}}>
+  Name: {listValue.name} Username: {listValue.username} email:{" "}
+  {listValue.email} phone: {listValue.phone}
+  <ButtonRemoveItem onClickRemove={onClickRemove} dataId={listValue.id} />
+</li>
+);
+}
 }
 
-    => Trang UserControllers gồm {
-        const listUsersApi = ("https://jsonplaceholder.typicode.com/users");
+export { DisplayList };
+}
+
+=> Trang UserControllers gồm {
+const listUsersApi = ("https://jsonplaceholder.typicode.com/users");
 async function fetchListUsers$() {
-    try {
-        const reponse = await fetch(listUsersApi);
-        return await reponse.json()
-    } catch (error) {
-        console.log("Fetch list user ger erorr", error);
-    }
+try {
+const reponse = await fetch(listUsersApi);
+return await reponse.json()
+} catch (error) {
+console.log("Fetch list user ger erorr", error);
+}
 }
 export { fetchListUsers$ }
 }
 
-    => Trang ButtonRemoveItem Gồm {
-        function ButtonRemoveItem({onClickRemove, dataId}) {
-   return <button onClick={() => onClickRemove(dataId)}>Remove</button>
+=> Trang ButtonRemoveItem Gồm {
+function ButtonRemoveItem({onClickRemove, dataId}) {
+return <button onClick={()=> onClickRemove(dataId)}>Remove</button>
 }
 
 export {ButtonRemoveItem}
 }
 
-    => Trang App.js gồm {
-        import { useState } from "react"
+=> Trang App.js gồm {
+import { useState } from "react"
 import { DisplayList } from "./DisplayList/DisplayList"
 import { fetchListUsers$ } from "./controllers/usersControllers";
 
 const listUser = await fetchListUsers$();
 
 const listProducts = [
-    { id: 1, name: "iPhone 15 Pro", price: "30.000.000 VNĐ", image: "https://tse4.mm.bing.net/th?id=OIP.HdFzMBPOKKKvmqjw28b1NAHaE7&w=315&h=315&c=7" },
-    { id: 2, name: "Samsung Galaxy S24 Ultra", price: "28.000.000 VNĐ", image: "https://tse4.mm.bing.net/th?id=OIP.evJadDOV8fCafwFpfXlCFwHaHb&w=474&h=474&c=7" },
-    { id: 3, name: "MacBook Air M3", price: "32.000.000 VNĐ", image: "https://tse4.mm.bing.net/th?id=OIP.SDaCiuck6kvvKQGXWPIVhgHaEK&w=266&h=266&c=7" },
-    { id: 4, name: "iPad Pro M2", price: "25.000.000 VNĐ", image: "https://tse2.mm.bing.net/th?id=OIP.jIvaIyHCvAh37N-ryLYhuAHaHa&w=474&h=474&c=7" },
-    { id: 5, name: "Sony WH-1000XM5", price: "9.000.000 VNĐ", image: "https://tse4.mm.bing.net/th?id=OIP.jzVtyTSDIE3hMKn307UNFQHaHa&w=474&h=474&c=7" }
+{ id: 1, name: "iPhone 15 Pro", price: "30.000.000 VNĐ", image:
+"https://tse4.mm.bing.net/th?id=OIP.HdFzMBPOKKKvmqjw28b1NAHaE7&w=315&h=315&c=7" },
+{ id: 2, name: "Samsung Galaxy S24 Ultra", price: "28.000.000 VNĐ", image:
+"https://tse4.mm.bing.net/th?id=OIP.evJadDOV8fCafwFpfXlCFwHaHb&w=474&h=474&c=7" },
+{ id: 3, name: "MacBook Air M3", price: "32.000.000 VNĐ", image:
+"https://tse4.mm.bing.net/th?id=OIP.SDaCiuck6kvvKQGXWPIVhgHaEK&w=266&h=266&c=7" },
+{ id: 4, name: "iPad Pro M2", price: "25.000.000 VNĐ", image:
+"https://tse2.mm.bing.net/th?id=OIP.jIvaIyHCvAh37N-ryLYhuAHaHa&w=474&h=474&c=7" },
+{ id: 5, name: "Sony WH-1000XM5", price: "9.000.000 VNĐ", image:
+"https://tse4.mm.bing.net/th?id=OIP.jzVtyTSDIE3hMKn307UNFQHaHa&w=474&h=474&c=7" }
 ]
 
 function DisplayListProducts() {
-    const [products, setProducts] = useState(listProducts);
+const [products, setProducts] = useState(listProducts);
 
-    function removeProduct(id) {
-        setProducts((preProducts) => preProducts.filter((_products) => _products.id !== id))
-    };
-    return (
-        <>
-            <DisplayList title={"Products"} list={products} onClickRemove={removeProduct} />
-            {console.log(products)}
-        </>
-    )
+function removeProduct(id) {
+setProducts((preProducts) => preProducts.filter((_products) => _products.id !== id))
+};
+return (
+<>
+  <DisplayList title={"Products"} list={products} onClickRemove={removeProduct} />
+  {console.log(products)}
+</>
+)
 }
 
 function DisplayListUser() {
-    const [users, setUsers] = useState(listUser);
+const [users, setUsers] = useState(listUser);
 
-    function removeUser(id) {
-        setUsers((preUser) => preUser.filter((user) => user.id !== id))
-    }
+function removeUser(id) {
+setUsers((preUser) => preUser.filter((user) => user.id !== id))
+}
 
-    return (
-        <>
-            <DisplayList title={"Users"} list={users} onClickRemove={removeUser} />
-            {console.log(users)}
-        </>
-    )
+return (
+<>
+  <DisplayList title={"Users"} list={users} onClickRemove={removeUser} />
+  {console.log(users)}
+</>
+)
 }
 
 export { DisplayListProducts, DisplayListUser }
