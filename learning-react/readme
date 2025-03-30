@@ -1,11 +1,41 @@
 ✅ Mục 7: Form và xử lý dữ liệu nhập
 🧠 Câu hỏi:
 Controlled component là gì?
+=> Các input sẽ được quản lí bởi React để điều chỉnh UI đúng với state
 e.preventDefault() dùng để làm gì?
+=> tránh bị refresh lại trang khi tôi submit form
 Làm sao để bind nhiều input với state?
+=> khởi tạo 1 object useState và 1 function setState rồi dùng nó gắn cho các input
 
 🧪 Bài tập:
 Form nhập tên + tuổi → hiển thị kết quả bên dưới.
+=> function ShowFormInputNameAndAge() {
+const [userData, setUserData] = useState({
+name: "",
+age: 0
+})
+
+function handleInputChange(e) {
+setUserData({
+...userData,
+[e.target.name]: e.target.value
+})
+}
+
+return (
+<div>
+  <form>
+    <label htmlFor="name">Your name: {userData.name}</label>
+    <br />
+    <input type="text" name="name" value={userData.name} onChange={handleInputChange} />
+    <br />
+    <label htmlFor="age">Your age: {userData.age}</label>
+    <br />
+    <input type="number" name="age" value={userData.age} onChange={handleInputChange} />
+  </form>
+</div>
+)
+}
 Form có các input: tên, email, giới tính (radio), sở thích (checkbox).
 Submit form -> in ra object userData.
 Viết component SearchBox lọc danh sách theo từ khoá.
