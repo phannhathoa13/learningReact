@@ -13,51 +13,11 @@ const PRODUCTS = [
   { category: "Vegetables", price: "$1", stocked: true, name: "Peas" },
 ];
 
-const stockedList = [false, true];
-const stockedListLabel = {
-  false: "False",
-  true: "True"
-}
+const test = [
+  {id: 0, name : "True", value: true},
+  {id: 1, name : "False", value: false},
+]
 
-// components
-function LearnReact() {
-  const [filterText, setFilterText] = useState("");
-  const [priceSelected, setPriceSelected] = useState(-1);
-  const [isProductStocked, setIsProductStocked] = useState(false);
-
-  function updateProductStockedState(isProductStocked) {
-    return setIsProductStocked(isProductStocked === "true")
-  }
-
-  return (
-    <div>
-      <SearchBar filterText={filterText} setFilterText={setFilterText} />
-      <DropDown
-        title={"Choose Price"}
-        optionInfoList={removeDuplicatePrice()}
-        setOptionInfoList={setPriceSelected}
-        defaultOptionName={"all"}
-        optionString={"$"}
-      />
-      <DropDown
-        title={"Show Stocked Product"}
-        optionInfoList={stockedList}
-        setOptionInfoList={updateProductStockedState}
-        optionString = {stockedListLabel}
-      />
-      <DisplayListProducts
-        products={filterProducts(
-          PRODUCTS,
-          filterText,
-          priceSelected,
-          isProductStocked
-        )}
-      />
-    </div>
-  );
-}
-
-// logic
 function filterProducts(products, filterText, priceSelected, isProductStocked) {
   return products.filter((_product) => {
     const priceNumber = parseFloat(_product.price.split("$", 2).splice(1, 2));
@@ -67,34 +27,61 @@ function filterProducts(products, filterText, priceSelected, isProductStocked) {
       .includes(filterText.toLowerCase());
     const matchPrice = priceNumber == priceSelected;
     const matchProductStocked = _product.stocked == isProductStocked;
-    
+
     if (priceSelected == -1) {
-      return matchProductName && matchProductStocked
+      return matchProductName && matchProductStocked;
     } else {
-      return matchProductName && matchProductStocked && matchPrice
+      return matchProductName && matchProductStocked && matchPrice;
     }
   });
 }
+function filterDuplicatePriceProduct() {
+  return PRODUCTS.reduce((acc, item) => {
+    if (!acc.some((test) => test.price === item.price)) {
+      acc.push(item);
+    }
+    return acc;
+  }, []);
+}
 
-function getPriceList() {
-  const listPriceString = PRODUCTS.map((_product) =>
-    _product.price.split("$", 2).splice(1, 2)
+
+
+function priceValues() {
+  const listPrice = filterDuplicatePriceProduct();
+  return listPrice.map((_product, index) => {
+    return {
+      id: index,
+      name: _product.price,
+      value: parseFloat(_product.price.split("$", 2).splice(1, 2)),
+    };
+  });
+}
+
+// components
+function LearnReact() {
+  const [filterText, setFilterText] = useState("");
+  const [priceSelected, setPriceSelected] = useState(-1);
+  const [isProductStocked, setIsProductStocked] = useState(false);
+
+  console.log(filterDuplicatePriceProduct());
+
+  return (
+    <div>
+      <SearchBar filterText={filterText} setFilterText={setFilterText} />
+      <DisplayListProducts
+        products={filterProducts(
+          PRODUCTS,
+          filterText,
+          priceSelected,
+          isProductStocked
+        )}
+      />
+      <DropDown values={test} />
+    </div>
   );
-  return listPriceString.map((priceString) => parseFloat(priceString));
 }
 
-function removeDuplicatePrice() {
-  const filterProductPriceDuplicate = [];
-  const priceList = getPriceList();
-  priceList.forEach((price) => {
-    if (filterProductPriceDuplicate.some((_price) => _price == price)) {
-      return;
-    } else {
-      filterProductPriceDuplicate.push(price);
-    }
-  });
-  return filterProductPriceDuplicate;
-}
+// logic
 
 //implement
 export { LearnReact };
