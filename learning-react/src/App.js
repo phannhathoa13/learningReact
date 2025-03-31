@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { fetchUser$ } from "./controllers/usersControllers";
 
 function ShowFormInputNameAndAge() {
   const [userData, setUserData] = useState({
@@ -61,6 +62,19 @@ function handleInputChange(e, setUserData, userData) {
       [e.target.name]: e.target.value
     })
   }
+}
+
+function DisplayListUser() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    async function getUser() {
+      setUsers(await fetchUser$())
+    }
+    getUser();
+  }, [])
+
+
 }
 
 export { ShowFormInputNameAndAge }
