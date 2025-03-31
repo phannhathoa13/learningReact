@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { DisplayListProducts, DisplayListUser, TodoList } from "./App";
+import { DisplayListProducts, DisplayListUser } from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

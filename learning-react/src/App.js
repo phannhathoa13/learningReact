@@ -13,13 +13,13 @@ const listProducts = [
 function DisplayListProducts() {
   const [products, setProducts] = useState(listProducts);
 
-  function removeProduct(id) {
-    setProducts((preProducts) => preProducts.filter((_products) => _products.id !== id))
-  };
+  const removeProduct = (id) => {
+    removeItem(id, setProducts)
+  }
+
   return (
     <>
       <DisplayList title={"Products"} list={products} onClickRemove={removeProduct} />
-      {console.log(products)}
     </>
   )
 }
@@ -28,30 +28,27 @@ function DisplayListUser() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    async function getDate() {
-      return setUsers(await fetchListUsers$());
-    }
-    getDate();
+    getUsers(setUsers);
   }, [])
 
-  function removeUser(id) {
-    setUsers((preUser) => preUser.filter((user) => user.id !== id))
+  const removeUser = (id) => {
+    removeItem(id, setUsers);
   }
 
   return (
     <>
       <DisplayList title={"Users"} list={users} onClickRemove={removeUser} />
-      {console.log(users)}
     </>
   )
 }
 
 
+function removeItem(id, setState) {
+  setState((preItem) => preItem.filter((item) => item.id !== id));
+}
+
+async function getUsers(setUsers) {
+  setUsers(await fetchListUsers$());
+}
+
 export { DisplayListProducts, DisplayListUser }
-
-
-
-
-
-
-

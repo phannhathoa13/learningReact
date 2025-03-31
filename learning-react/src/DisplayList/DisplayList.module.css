@@ -1,0 +1,6 @@
+.listProducts {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  color: green;
+}

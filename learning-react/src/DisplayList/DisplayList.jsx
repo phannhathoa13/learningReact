@@ -1,6 +1,7 @@
 import { ButtonRemoveItem } from "../RemoveItem/RemoveItem";
+import styles from "./DisplayList.module.css";
 
-function DisplayList({ title,list,onClickRemove }) {
+function DisplayList({ title, list, onClickRemove }) {
   return (
     <div>
       <h2>{title}</h2>
@@ -13,21 +14,18 @@ function DisplayList({ title,list,onClickRemove }) {
   );
 }
 
-function renderListItemByTitle(listValue, title,onClickRemove) {
+function renderListItemByTitle(listValue, title, onClickRemove) {
   if (title == "Products") {
     return (
-      <li style={{ display: "flex", alignItems: "center", margin: "10px" , color:"green"}}>
-        <img
-          src={listValue.image}
-          style={{ width: "70px", height: "50px" }}
-        ></img>
+      <li>
+        <img src={listValue.image}></img>
         Name: {listValue.name} Price: {listValue.price}
         <ButtonRemoveItem onClickRemove={onClickRemove} dataId={listValue.id} />
       </li>
     );
   } else if (title == "Users") {
     return (
-      <li style={{margin: "10px",color:"green"}}>
+      <li>
         Name: {listValue.name} Username: {listValue.username} email:{" "}
         {listValue.email} phone: {listValue.phone}
         <ButtonRemoveItem onClickRemove={onClickRemove} dataId={listValue.id} />
