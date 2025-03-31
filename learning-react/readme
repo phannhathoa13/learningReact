@@ -9,7 +9,7 @@ Làm sao để useEffect chỉ chạy một lần?
 => nó sẽ chạy khi bất kì components renders lại
 
 🧪 Bài tập:
-Dùng useEffect để log "Component mounted" 1 lần duy nhất.
+Dùng useEffect để log "Component mounted" 1 lần duy nhất. //
 => function TestUseffect() {
 const [count, setCount] = useState(0);
 
@@ -72,3 +72,20 @@ return (
 </div>
 )
 }
+
+
+
+=> State 1 : Khi render xong, useEffect chạy 1 lần
+useEffect(() => {
+
+},[])
+
+=> State 2 : Khi render xong và sẽ chạy thằng useEffect
+useEffect(() => {
+
+},[])
+
+=> State 3 : return() => {} là hàm void nó sẽ chạy sau khi ccomponents đó bị đóng
+
+
+=> nghiên cứu thêm có trường hợp nào xử lí trước khi render không
