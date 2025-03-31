@@ -22,12 +22,12 @@ trường hợp nào là tất cả sẽ rerender lại ?
 </cha>
 
 2// trả lời
-<cha> 
+<cha>
   [Test,setTest]=useState(true);
   setTest(false)
-  <con ={Test}>
-    <con ={Test}>
-      <con ={Test}>
+  <con={Test}>
+    <con={Test}>
+      <con={Test}>
 </cha>
 
 State thay đổi thì component có render lại không?
@@ -74,10 +74,10 @@ Component bật/tắt đèn (true/false → hiển thị trạng thái).
 const [isDark, setIsDark] = useState(false);
 return (
 <>
-<button onClick={()=> setIsDark(!isDark)}>
-{isDark ? "Light Mode" : "Dark Mode"}
-</button>
-{isDark ? setColorBackGround("black") : setColorBackGround("white")}
+  <button onClick={()=> setIsDark(!isDark)}>
+    {isDark ? "Light Mode" : "Dark Mode"}
+  </button>
+  {isDark ? setColorBackGround("black") : setColorBackGround("white")}
 </>
 )
 }
@@ -107,7 +107,7 @@ return (
 }
 
 => function getRamdomNumber() {
-return Math.floor(Math.random() \* 256);
+return Math.floor(Math.random() * 256);
 }
 => function setRGBBackgroundColor(x, y, z) {
 return (
