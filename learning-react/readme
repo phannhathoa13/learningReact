@@ -1,7 +1,7 @@
 ✅ Mục 3: State & Event
 🧠 Câu hỏi:
 useState là gì? Làm sao để cập nhật giá trị?
-=> useState là 1 hàm của React nó dùng để lưu giá trị và sẽ chạy lại UI khi có sự thay đổi
+=> useState là 1 hàm của React nó dùng để lưu giá trị và sẽ Re-Render lại khi State có sự thay đổi
 // là một hàm trả về giá trị [] chứa 2 giá trị là giá trị và function để set gía trị
 
 => Để cập nhật giá trị: ta sẽ dùng setState để cập nhật giá trị và setState sẽ re-render lại compoents
@@ -11,6 +11,10 @@ và giả sử như như phần con không có prop là state thì mỗi khi cha
 
 cha set state thì các con có rerender không ?
 trường hợp nào là tất cả sẽ rerender lại ?
+
+=> nghiên cứu khi tôi setState lại giá trị ban đầu khởi tạo vô thì nó có re-render lại ko
+=> khi Components cha render lại thì tất cả Components con đều chạy nghiên cứu làm sao chỉ chạy thằng components A hoặc
+B chạy thôi để tối ưu
 
 1// trả lời
 <cha>
