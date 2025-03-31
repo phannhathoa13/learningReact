@@ -16,7 +16,7 @@ function DisplayList({ title,list,onClickRemove }) {
 function renderListItemByTitle(listValue, title,onClickRemove) {
   if (title == "Products") {
     return (
-      <li style={{ display: "flex", alignItems: "center", margin: "10px" }}>
+      <li style={{ display: "flex", alignItems: "center", margin: "10px" , color:"green"}}>
         <img
           src={listValue.image}
           style={{ width: "70px", height: "50px" }}
@@ -27,7 +27,7 @@ function renderListItemByTitle(listValue, title,onClickRemove) {
     );
   } else if (title == "Users") {
     return (
-      <li style={{margin: "10px",}}>
+      <li style={{margin: "10px",color:"green"}}>
         Name: {listValue.name} Username: {listValue.username} email:{" "}
         {listValue.email} phone: {listValue.phone}
         <ButtonRemoveItem onClickRemove={onClickRemove} dataId={listValue.id} />
@@ -35,7 +35,5 @@ function renderListItemByTitle(listValue, title,onClickRemove) {
     );
   }
 }
-
-
 
 export { DisplayList };
