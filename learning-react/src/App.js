@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchUser$ } from "./controllers/usersControllers";
 
 function ShowFormInputNameAndAge() {
@@ -73,8 +73,42 @@ function DisplayListUser() {
     }
     getUser();
   }, [])
-
-
 }
 
-export { ShowFormInputNameAndAge }
+function ChekcUserInputUsername() {
+  const [userData, setUserData] = useState({
+    name: '',
+    error: ''
+  })
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (userData.name.trim() === '') {
+      setUserData({
+        ...userData,
+        error: "Vui long nhap ten"
+      })
+    } else {
+      setUserData({
+        ...userData,
+        error: ''
+      })
+      console.log('Tên hợp lệ:', userData.name);
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input value={userData.name} onChange={(e) => {
+        setUserData({
+          ...userData,
+          name: e.target.value,
+        })
+      }} placeholder="Tên" />
+      {userData.error && <p style={{ color: 'red' }}>{userData.error}</p>}
+      <button type="submit">Gửi</button>
+    </form>
+  );
+}
+
+export { ShowFormInputNameAndAge, ChekcUserInputUsername }
