@@ -9,3 +9,12 @@ Tạo 3 trang: Home, About, Contact → Điều hướng bằng <Link>.
 Trang UserDetail lấy ID từ URL: /users/:id.
 Tạo trang 404 khi URL không đúng.
 Dùng useNavigate() để chuyển trang sau 3s (giống redirect).
+
+✅ Học React Router theo flow sau:
+    Bước	Chủ đề	            Có gì cần học
+    1	Setup Routes	        BrowserRouter, Routes, Route
+    2	Di chuyển trang	        Link, useNavigate()
+    3	Route động	            :id, useParams()
+    4	Nested routes	        Outlet, layout page
+    5	404 page	            qpath="*"
+    6	Redirect sau form	    Gửi xong → navigate("/thankyou")
