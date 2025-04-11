@@ -2,10 +2,69 @@
 
 🧠 Câu hỏi:
 Cấu trúc route đơn giản trong React như thế nào?
+    => Sẽ gồm BrowserRouter, công dụng là gói toàn bộ URL 
+    => gồm Routes, công dụng sẽ là bao bọc các Route
+    => Gồm Route, công dụng gồm : 
+        => path= "" là đường dẫn ngay trang đó và element = {Components} hiển thị components tương ứng
+        Ví dụ : <Route path = "/" element = {<Home />} /> "/" có nghĩa là trang chính 
 useParams và useNavigate dùng để làm gì?
+    => useParam dùng để lấy thông tin từ trên đường dẫn
+        => Khi nào sử dụng : 
+            - Là khi tôi muốn lấy các Id hoặc các thông tin sản phẩm
+            Để có thể gọi api hoặc render đúng sản phẩm hoặc Id đó
+    => useNavigate là dùng để chuyển sang trang mới bằng cách thay đổi URL,
+        mà không bị reload lại cả trang
 
 🧪 Bài tập:
 Tạo 3 trang: Home, About, Contact → Điều hướng bằng <Link>.
+    => Trang chính điều hướng các trang App.js
+        => function App() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path='/contact' element={<Contact />} />
+            </Routes>
+        </BrowserRouter>
+    );
+}
+
+    => Trang Home.jsx
+        function Home () {
+        return (
+            <>
+            <h1>Home</h1>
+            <Link to='/about'>About </Link>
+            </>
+        )
+        }
+        export default Home
+    
+     => Trang About.jsx
+        function About () {
+        return (
+            <>
+            <h1>About </h1>
+            <Link to='/contact'>Contact</Link>
+            </>
+        )
+        }
+        export default About
+    
+     => Trang Contact.jsx
+        function Contact () {
+        return (
+            <>
+            <h1>Contact</h1>
+            <Link to='/'>Home</Link>
+            </>
+        )
+        }
+
+        export default Contact
+
+
 Trang UserDetail lấy ID từ URL: /users/:id.
 Tạo trang 404 khi URL không đúng.
 Dùng useNavigate() để chuyển trang sau 3s (giống redirect).
