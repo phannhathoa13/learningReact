@@ -66,8 +66,74 @@ Tạo 3 trang: Home, About, Contact → Điều hướng bằng <Link>.
 
 
 Trang UserDetail lấy ID từ URL: /users/:id.
+    => các flow làm :
+        => Đầu tiên bên trang cần chuyển sang trang tiếp thì phải gắn đường dẫn navigate trước
+        const navigate = useNavigate()
+        const handleClick = () => {
+            const userId = 1
+            navigate(`/users/${userId}`)
+        }
+        => Sau đó qua trang app.js chính tôi phải tạo đường dẫn cho nó
+            -  <Route path='/users/:id' element={<UserDetail />} />
+        
+        => Cuối cùng là lấy giá trị từ param bên trang UserDetail
+            -   function UserDetail () {
+            const { id } = useParams()
+            return (
+                <>
+                <h1>Hello {id} </h1>
+                </>
+            )
+            }
+
 Tạo trang 404 khi URL không đúng.
+    => Trong app.js ( path = * có nghĩa là các đường dẫn không tồn tại, và phải được đặt cuối cùng)
+        <Route path='*' element={<NotFound />} />
+    
+    => Trong NotFound.jsx
+        function NotFound () {
+        return (
+            <div className='page-404'>
+            <h2>404</h2>
+            <p>This page is not existed</p>
+            </div>
+        )
+        }
+        export { NotFound }
+
+
 Dùng useNavigate() để chuyển trang sau 3s (giống redirect).
+    => function RedirectPage () {
+  const [count, setCount] = useState(-1)
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    setCount(4)
+  }
+
+  useEffect(() => {
+    if (count == -1) {
+      return
+    }
+    const interval = setInterval(() => {
+      setCount(count - 1)
+    }, 1000)
+    console.log(count)
+    if (count == 0) {
+      navigate(`/about`)
+    }
+    return () => {
+      clearInterval(interval)
+    }
+  }, [count])
+
+  return (
+    <div>
+      <button onClick={handleClick}>Switch Page</button>
+      {count > 0 && <p>Navigate to about in {count}s</p>}
+    </div>
+  )
+}
 
 ✅ Học React Router theo flow sau:
     Bước	Chủ đề	            Có gì cần học
@@ -75,5 +141,6 @@ Dùng useNavigate() để chuyển trang sau 3s (giống redirect).
     2	Di chuyển trang	        Link, useNavigate()
     3	Route động	            :id, useParams()
     4	Nested routes	        Outlet, layout page
-    5	404 page	            qpath="*"
+    5	404 page	            path="*"
     6	Redirect sau form	    Gửi xong → navigate("/thankyou")
+
