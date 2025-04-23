@@ -14,19 +14,19 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                {/* <Route path='/' element={<>
+                <Route path='/' element={<>
                     <Home />, <RedirectPage />
                 </>} />
                 <Route path="/about" element={<About />} />
                 <Route path='/contact' element={<Contact />} />
                 <Route path='/users/:id' element={<UserDetail />} />
-                <Route path='*' element={<NotFound />} /> */}
+                <Route path='*' element={<NotFound />} />
 
-                <Route path="/dashboard" element={<DashboardLayout />}>
+                {/* <Route path="/dashboard" element={<DashboardLayout />}>
                     <Route index element={<DashboardHome />} />
                     <Route path="profile" element={<Profile />} />
                     <Route path="settings" element={<Setting />} />
-                </Route>
+                </Route> */}
 
 
             </Routes>
