@@ -1,7 +1,10 @@
 ✅ Mục 9: Quản lý state nâng cao (Context API)
 🧠 Câu hỏi:
 Context API giúp gì cho project?
+    => Giúp chia sẽ các State xuống các components con, mà không cần phải truyền pops quá sâu, code gọn gàng có tổ chức hơn
 Provider và Consumer hoạt động thế nào?
+    => Provider sẽ cung cấp value cho Context, để cho các components con có thể sử dụng mà không cần truyền pops
+    => Consumer hoặc là useContext() là dùng để lấy giá trị của Provider cung cấp để sử dụng trong các components con
 
 🧪 Bài tập:
 Tạo ThemeContext và nút chuyển Light/Dark mode.
